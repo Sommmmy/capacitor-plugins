@@ -41,7 +41,11 @@ public class SharePlugin extends Plugin {
                     }
                 }
             };
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        getActivity().registerReceiver(broadcastReceiver, new IntentFilter(Intent.EXTRA_CHOSEN_COMPONENT), Context.RECEIVER_NOT_EXPORTED);
+      } else {
         getActivity().registerReceiver(broadcastReceiver, new IntentFilter(Intent.EXTRA_CHOSEN_COMPONENT));
+      }
     }
 
     @SuppressWarnings("deprecation")
